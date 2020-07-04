@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moto Friends</title>
+    <H1><a href="/">MOTO FRIENDS</a></H1>
+    {% if user.is_authenticated %}
+    <h3>Jesteś zalogowany! <br></h3>
+
+<li> <a href="/add_trip">Dodaj wyjazd</a> </li>
+<li> <a href="/trips">najblizsze wyjazdy</a> </li>
+<li> <a href="/add_relation">Dodaj relacje</a> </li>
+<li> <a href="/relations">relacje</a> </li>
+<li> <a href="/add_review">Dodaj opinie</a> </li>
+<li> <a href="/reviews">opinie</a> </li><br>
+        <br>
+        <br>
+        <p>Wyloguj się <a href="/logout">tutaj!</a></p>
+        <p>sprawdź swój profil <a href="/user/{{user.id}}/">tutaj!</a></p>
+    {% else %}
+        <h3>NASZE WYJAZDY</h3>
+{% for trip in trips %}
+    <li>{{ trip }}</li>
+{% endfor %}
+    <p>zaloguj się <a href="/login">tutaj!</a></p>
+    {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+
+</head>
+<body>
+
+</body>
+</html>

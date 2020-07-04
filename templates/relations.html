@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        {%  for relation in relations %}
+            <li><a href="/relation_details/{{relation.id}}">{{ relation }}</a></li>
+        {%  endfor %}
+    </ul>
+
+{% endblock %}

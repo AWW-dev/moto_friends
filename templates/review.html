@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p><h2>{{reviews.topic}}</h2></p>
+    <p>opis produktu: {{reviews.content}}</p>
+    <p>co to w ogole jest? {{reviews.get_subject_display}}</p>
+    <p>cena: {{reviews.price}}</p>
+    <p>data utowrzenia: {{reviews.create_date}}</p>
+    <p>data modyfikacji: {{reviews.last_modification}}</p>
+    <p>autor: <a href="/user/{{user.id}}/">{{ reviews.creator }}</a></p>
+    <p>napisz komentarz <a href="/add_commentreview/{{ reviews.id }}"> tu</a> </p>
+    <ul>
+        {%  for comment  in comments %}
+            <br><li>autor: <a href="/user/{{user.id}}/">{{ comment.creator }}</a></li>
+            <li>data utowrzenia: {{ comment.create_date}}</li>
+            <li>komentarz: {{ comment.body }}<br></li>
+        {% empty %}
+            <p>nie ma jeszcze komentarzy</p>
+        {%  endfor %}
+    </ul>
+
+{% endblock %}

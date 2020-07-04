@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>{{trips.id}}</p>
+
+
+    <ul>
+        {%  for trip in trips %}
+            <li><a href="trips/{{trips.id}}">{{ trip }}</a></li>
+        {%  endfor %}
+    </ul>>
+
+{% endblock %}

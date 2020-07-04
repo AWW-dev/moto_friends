@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p><h2>{{trip.topic}}</h2></p>
+    <p>opis wyjazdu: {{trip.content}}</p>
+    <p>w jakim stylu jedziemy? {{trip.get_style_display}}</p>
+    <p>Dystans wyprawy: {{trip.distans}}</p>
+    <p>Skąd startujemy? {{trip.city_start}}</p>
+    <p>kiedy ruszamy? {{trip.data_start}}</p>
+    <p>data utowrzenia: {{trip.create_date}}</p>
+    <p>data modyfikacji: {{trip.last_modification}}</p>
+    <p>autor: <a href="/user/{{user.id}}/">{{ trip.creator }}</a></p>
+    <p>napisz komentarz <a href="/add_commenttrip/{{ trip.id }}"> tu</a> </p>
+    <ul>
+        {%  for comment  in comments %}
+            <br><li>autor: <a href="/user/{{user.id}}/">{{ comment.creator }}</a></li>
+            <li>data utowrzenia: {{ comment.create_date}}</li>
+            <li>komentarz: {{ comment.body }}<br></li>
+        {% empty %}
+            <p>nie ma jeszcze komentarzy</p>
+        {%  endfor %}
+    </ul>
+
+{% endblock %}

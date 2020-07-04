@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        {%  for review in reviews %}
+            <li><a href="/review_details/{{review.id}}">{{ review }}</a></li>
+        {%  endfor %}
+    </ul>
+
+{% endblock %}
