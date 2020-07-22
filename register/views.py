@@ -16,7 +16,6 @@ def register(request):
             user = form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-
             profile.save()
 
         return redirect("/")

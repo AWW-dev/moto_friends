@@ -29,7 +29,6 @@ WOJE = (
 )
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     location = models.IntegerField(choices=WOJE, verbose_name="skąd ruszasz?")
     age = models.IntegerField(verbose_name="Twój wiek?")
     bike_type = models.IntegerField(choices=BIKE, verbose_name="typ motocykla")

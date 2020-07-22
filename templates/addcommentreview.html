@@ -1,5 +1,8 @@
 <form method="post" {% if action %} action="{{ action}}" {% endif %}>
         {% csrf_token %}
         {{ form.as_p }}
-        <tr><td><input type="submit" value="Dodaj"></td></tr>
+        <tr><td><input type="submit" value="Dodaj"></td></tr><br>
+        <form>
+            <input type="button" value="cofnij" onclick="history.back()">
+        </form>
 </form>
