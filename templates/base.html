@@ -1,36 +1,59 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Moto Friends</title>
-    <H1><a href="/">MOTO FRIENDS</a></H1>
-    {% if user.is_authenticated %}
-    <h3>Jesteś zalogowany! <br></h3>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<li> <a href="/add_trip">Dodaj wyjazd</a> </li>
-<li> <a href="/trips">najblizsze wyjazdy</a> </li>
-<li> <a href="/add_relation">Dodaj relacje</a> </li>
-<li> <a href="/relations">relacje</a> </li>
-<li> <a href="/add_review">Dodaj opinie</a> </li>
-<li> <a href="/reviews">opinie</a> </li><br>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <script src="{% static 'app.js' %}"></script>
+    <title>Moto Friends</title>
+    <div class="name">
+        <H1><img src= "{% static '/motofriends/logo.png' %}" width="100px"> <a href="/">MOTO FRIENDS</a></H1>
+    </div>
+        {% if user.is_authenticated %}
+
+    <div class="login">
+            <h3>Jesteś zalogowany! <br></h3>
+    </div>
+     <div class="sidenav">
+        <li> <a href="/add_trip">Dodaj wyjazd</a> </li>
+        <li> <a href="/trips">Najblizsze wyjazdy</a> </li>
+        <li> <a href="/add_relation">Dodaj relacje</a> </li>
+        <li> <a href="/relations">Relacje</a> </li>
+        <li> <a href="/add_review">Dodaj opinie</a> </li>
+        <li> <a href="/reviews">Opinie</a> </li><br>
+     </div>
         <br>
         <br>
-        <p>Wyloguj się <a href="/logout">tutaj!</a></p>
-        <p>sprawdź swój profil <a href="/user/{{user.id}}/">tutaj!</a></p>
+
     {% else %}
+     <div class="trips">
         <h3>NASZE WYJAZDY</h3>
-{% for trip in trips %}
-    <li>{{ trip }}</li>
-{% endfor %}
+            {% for trip in trips %}
+                <li>{{ trip }}</li>
+            {% endfor %}
+     </div>
+     <div class="login">
     <p>zaloguj się <a href="/login">tutaj!</a></p>
     {% endif %}
-
-        {% block content %}
-        {% endblock %}
+    </div>
 
 
 </head>
 <body>
-
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="logout">
+        <br>
+        <p>Wyloguj się <a href="/logout">tutaj!</a>
+        Sprawdź swój profil <a href="/user/{{user.id}}/">tutaj!</a></p>
+     </div>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
